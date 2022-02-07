@@ -1,0 +1,166 @@
+:root{
+    --cover: rgba(0,0,0,0.7);
+    --footer: #333333;
+    --text-gray: #dddddd;
+    --light-color: #f3f3f3;
+    --dark-purple: #750d48;
+    --magenta: #bc175c;
+    --pink: #ea5da9;
+    --blue: #002f49;
+}
+.clr{
+    clear: both;
+}
+@font-face {
+    font-family: Gandom;
+    src: url('http://fonts.codearena.ir/rastikerdar/gandom/gandom.eot');
+    src: url('http://fonts.codearena.ir/rastikerdar/gandom/gandom.eot?#iefix') format('embedded-opentype'),
+    url('http://fonts.codearena.ir/rastikerdar/gandom/gandom.woff') format('woff'),
+    url('http://fonts.codearena.ir/rastikerdar/gandom/gandom.ttf') format('truetype');
+    font-weight: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none !important;
+}
+a:hover{
+    text-decoration: none;
+}
+body{
+    direction: rtl !important;
+    font-family: Gandom,Tahoma;
+    font-size: 14px;
+}
+p{ font-family: Gandom,Tahoma !important;}
+label{
+    font-weight: bold;
+
+}
+footer{
+    background-color: var(--footer);
+    width: 100%;
+    margin-top: 4rem !important;
+}
+/*utility classes*/
+.clr{ clear: both;}
+.hr{
+    width: 300px;
+    height: 2px;
+}
+/*colors class*/
+.bg-purple{ background-color: var(--dark-purple); }
+.text-purple, text-purple:hover{ color: var(--dark-purple);}
+.bg-blue{ background-color: var(--blue)}
+.bg-magenta{ background-color:  var(--magenta);}
+.bg-pink{ background-color: var(--pink)}
+.bg-gray{ background-color: var( --text-gray)}
+.i-color{ background-color: var(--dark-purple);}
+.top-border-purple{ border-top: 3px solid var(--dark-purple)}
+.top-border-blue{ border-top: 3px solid var(--blue)}
+
+/*mainpage*/
+#showcase{
+    width: 100vw;
+    height: 100vh;
+    background: url("../img/Naqsh-e-Jahan5..jpg")no-repeat fixed center center/cover;
+}
+#showcase .cover{
+
+    height: 100%;
+    width: 100%;
+    position: relative;
+    top: 0;
+    right: 0;
+    background-color: var(--cover);
+}
+.content{
+    height: 88vh;}
+/**/
+/*navbar in public*/
+.my-nav-link{
+    color: var(--light-color);
+    transition: all 0.7s;
+}
+.my-nav-link:hover{
+    color: var(--light-color);
+    border-bottom: 3px solid var(--dark-purple);
+}
+/*about and showPost and login and register*/
+.img-part{
+    width: 40%;
+}
+.main-part{
+    width: 60%;
+    margin-bottom: 4.75rem;
+}
+.image-style{
+    width: 250px;
+    height: 250px;
+    border: 4px solid var(--magenta);
+}
+.about{
+    width: 75%;
+    height: auto;
+    background-color: var(--light-color);
+    box-shadow: 2px 6px 15px 5px #aaaaaa;
+}
+/*form style*/
+.my-input-style{
+    border: 2px solid var(--magenta);
+}
+.my-input-style:focus{ border: 3px solid var(--dark-purple)}
+.btn-colorful{
+ background-image: linear-gradient(to right, var(--magenta),var(--blue));
+}
+/*gallery classes*/
+.gallery{
+    background-color: var(--cover);
+    height: 85%!important;
+}
+.img-size{
+    height: 200px !important;
+}
+/*show post*/
+.first-image{
+    width: 200px;
+    height: 200px;
+}
+.show-image-size{
+    height: 118px;
+}
+.p-title{
+    font-size: 1.1rem;
+    border-bottom: 2px dashed black;
+}
+
+/*comment*/
+#comment{
+    border-top: 2px dashed var(--blue);
+}
+
+body#error{
+ background-color: #c2e296;
+}
+body#error h1{
+    font-size: 8rem;
+    text-decoration-style: double;
+    font-style: italic;
+    text-decoration: underline;
+    color: #2a4a01;
+    text-decoration-color: #a00429;
+}
+body#error i{
+    color: #668d00;}
+#error p{
+    color: #a00429;
+    font-size: 1.5rem;
+    font-weight: bold;}
+.links-font{
+    font-size: 12px;
+}

@@ -1,0 +1,38 @@
+:root{
+    --black: #000312;
+    --white-cover: rgba(255,255,255,0.7);
+    --delete: #a00429;
+    --edit: #7cb31a;
+    --show: #ff5507;
+    --orange: #f99500;
+}
+.bg-black{ background-color: var(--black)}
+body#admin{
+    /*background-image: linear-gradient(to right bottom,#caeaf5,#58919e,#54716d);*/
+    background-image: linear-gradient(to right bottom,#caeaf5,#74c0d8,#51868a,#557371);
+    direction: rtl;
+}
+#admin-nav{ height: 12vh}
+#manager{ min-height: 87vh;}
+#admin-menu{ min-height: 87vh}
+.bottom-border-purple{ border-bottom: 2px solid var(--blue)}
+
+.p-0{ padding: 0}
+.admin-hr{
+    width: 85%;
+    height: 3px;
+}
+#content{
+    background: var(--white-cover);
+    min-height: 80vh;
+}
+.bg-white{    background: var(--white-cover);}
+.btn-approve{ background-color: var(--edit)}
+.btn-show{ background-color: var(--show)}
+.btn-edit{ background-color: var(--orange)}
+.btn-delete,.session{ background-color: var(--delete)}
+.table{
+    transition: all 0.7s;
+}
+.table tr:hover{ background-color: #1b4e6b;}
+.t-font{ font-size: 12px}

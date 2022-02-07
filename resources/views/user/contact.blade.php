@@ -1,0 +1,34 @@
+@extends('includes.public-nav')
+
+@section('image-part')
+    <img src="{{url('img/tehran.png')}}" alt="" class="rounded-circle image-style">
+@endsection
+
+@section('main-part')
+    <div>
+        <h4 class="text-center"> تماس با ما</h4>
+        <div class="hr m-auto bg-magenta" ></div>
+        <div class="container mt-4 mb-3 text-right">
+            <form action="{{route('contact-us')}}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label for="name"> نام شما:</label>
+                    <input type="text" name="name" class="form-control my-input-style" id="name">
+                </div>
+                <div class="form-group">
+                    <label for="email"> ایمیل شما: </label>
+                    <input type="text" name="email" id="email" class="form-control my-input-style">
+
+                </div>
+                <div class="form-group">
+                    <label>پیام شما</label>
+                    <textarea class="my-input-style form-control"></textarea>
+                </div>
+
+                <button class="btn btn-block btn-colorful text-white" type="submit">ارسال پیام</button>
+            </form>
+        </div>
+    </div>
+
+
+@endsection

@@ -1,0 +1,38 @@
+<nav class="navbar pt-3 flex-row justify-content-between">
+    <ul class="nav text-white">
+        <li class="nav-item"><a href="{{url('/')}}" class="nav-link my-nav-link">صفحه ی اصلی</a></li>
+        @if(Auth::check())
+            @if( Auth::user()->IsAdmin())
+                <li class="item"><a href="{{url('/admin')}}" class="nav-link my-nav-link">مدیریت</a></li>
+            @endif
+        @endif
+        <li class="nav-item"><a href="{{url('/gallery')}}" class="nav-link my-nav-link">گالری</a></li>
+        <li class="nav-item"><a href="{{url('/about')}}" class="nav-link my-nav-link">درباره ی ما</a></li>
+        <li class="nav-item"><a href="{{url('/contact')}}" class="nav-link my-nav-link">تماس با ما</a></li>
+        @if(Auth::check())
+            <li>
+                <form action="{{route('logout')}}" method="post">
+                    @csrf
+                    <button type="submit" class="btn btn-link text-white">
+                        <i class="fas fa-sign-out-alt fa-2x"></i>
+                    </button>
+                </form>
+            </li>
+        @else
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link my-nav-link dropdown-toggle" id="navbarDropdownMenuLink"
+                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user text-white "></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a href="{{url('/login')}}" class="dropdown-item text-purple">ورود به وبسایت</a>
+                    <a href="{{url('/register')}}" class="dropdown-item text-purple">عضویت</a>
+
+                </div>
+            </li>
+        @endif
+    </ul>
+    <div class="text-white navbar-brand bg-purple p-2 pr-4 pl-4 rounded-circle">
+        <span>T <i class="fa fa-suitcase-rolling"></i> Experience</span>
+    </div>
+</nav>
