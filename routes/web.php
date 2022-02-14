@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
@@ -28,7 +29,8 @@ Route::get('/', function () {
     return view('main');
 });
 
-Route::view('/contact','user/contact')->name('contact-us');
+Route::get('/contact',[MessagesController::class,'create'])->name('contact-us');
+Route::post('/contact/store',[MessagesController::class,'store']);
 Route::view('/about','user/about');
 Route::get('/gallery',[PostController ::class,'gallery']);
 Route::get('/show-post/{id}',[PostController::class,'show']);
