@@ -6,6 +6,11 @@
 
 @section('main-part')
     <div>
+        @if(\Illuminate\Support\Facades\Session::has('messages'))
+            <p class="text-white p-2 rounded text-right bg-success">
+                {{Session('messages')}}
+            </p>
+        @endif
         <h4 class="text-center"> تماس با ما</h4>
         <div class="hr m-auto bg-magenta" ></div>
         <div class="container mt-4 mb-3 text-right">
