@@ -11,23 +11,22 @@ use PHPUnit\Framework\Constraint\Count;
 
 class PhotoController extends Controller
 {
-    //
 
-
-    public function delete($id){
-        $photo=Photo::find($id);
+    public function delete($id)
+    {
+        $photo = Photo::find($id);
         //check how many photos the post have
         //if is less than 1 it can not be deleted
-        $post=$photo->post;
-        if (count($post->photos)>1){
-            if ($photo){
+        $post = $photo->post;
+        if (count($post->photos) > 1) {
+            if ($photo) {
                 Storage::disk('public')->delete($photo->file);
             }
             $photo->delete();
-            Session::flash('photo_deleted','تصویر مورد نظر حذف شد');
+            Session::flash('photo_deleted', 'تصویر مورد نظر حذف شد');
             return redirect()->back();
         }
-        Session::flash('photo_deleted','متاسفانه تعداد عکسای موجود فقط یکی است و شما قادر به پاک کردن تصویر نیستید');
+        Session::flash('photo_deleted', 'متاسفانه تعداد عکسای موجود فقط یکی است و شما قادر به پاک کردن تصویر نیستید');
         return redirect()->back();
     }
 }
