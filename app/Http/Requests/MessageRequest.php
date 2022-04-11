@@ -24,16 +24,19 @@ class MessageRequest extends FormRequest
     public function rules()
     {
         return [
-            //
-            'body'=>'required'
-        ];
-    }
-
-    public function messages()
-    {
-        return[
-            'body.required'=>'برای ارسال نظر خود باید نظر خود را در کادر بالا بنویسید '
+            'name' => 'required',
+            'body' => 'required',
+            'email' => 'required|email',
         ];
 
     }
+
+//    public function messages()
+//    {
+//        return [
+//            'name.required'=> 'لطفا نام خود را وارد کنید',
+//            'email.required'=> 'لطفا ایمیل خود را وارد کنید',
+//            'body.required'=> 'لطفا پیام خود را وارد کنید'
+//        ];
+//    }
 }
