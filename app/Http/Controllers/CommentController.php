@@ -28,5 +28,5 @@ class CommentController extends Controller
         Session::flash('delete_message', 'پیام موورد نظر حذف شد');
         return redirect()->back();
     }
-    
+
 }
