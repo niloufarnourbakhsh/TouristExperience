@@ -31,12 +31,12 @@ class MessageRequest extends FormRequest
 
     }
 
-//    public function messages()
-//    {
-//        return [
-//            'name.required'=> 'لطفا نام خود را وارد کنید',
-//            'email.required'=> 'لطفا ایمیل خود را وارد کنید',
-//            'body.required'=> 'لطفا پیام خود را وارد کنید'
-//        ];
-//    }
+    public function messages()
+    {
+        return [
+            'name.required'=> 'لطفا نام خود را وارد کنید',
+            'email.required'=> 'لطفا ایمیل خود را وارد کنید',
+            'body.required'=> 'لطفا پیام خود را وارد کنید'
+        ];
+    }
 }
