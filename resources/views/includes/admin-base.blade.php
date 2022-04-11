@@ -36,8 +36,12 @@
                         <a href="{{url('/users')}}" class="nav-link text-white">مدیریت اعضا</a>
                     </li>
 
+                    <li class="nav-item p-3 bottom-border-purple">
+                        <a href="{{url('/comments')}}" class="nav-link text-white ">مدیریت نظرات </a>
+                    </li>
+
                     <li class="nav-item p-3">
-                        <a href="{{url('/comments')}}" class="nav-link text-white ">مدیریت پیام ها</a>
+                        <a href="{{url('/messages')}}" class="nav-link text-white ">مدیریت پیامها </a>
                     </li>
                 </ul>
             </div>
