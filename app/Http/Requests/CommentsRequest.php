@@ -25,7 +25,8 @@ class CommentsRequest extends FormRequest
     {
         return [
             //
-            'body'=>'required'
+            'body'=>'required',
+            'post_id'=>'required'
         ];
     }
 
