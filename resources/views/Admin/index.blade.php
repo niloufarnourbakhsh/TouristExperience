@@ -54,7 +54,7 @@
                             </td>
                             <td><a href="{{url('/show/'.$post->slug)}}" class="btn btn-show text-white btn-sm"><i class="fas fa-eye"></i></a></td>
 
-                            <td><a href="{{url('post/edit/'.$post->id)}}" class="btn btn-edit btn-sm" ><i class="fas fa-edit"></i></a></td>
+                            <td><a href="{{url('post/'.$post->id)}}" class="btn btn-edit btn-sm" ><i class="fas fa-edit"></i></a></td>
                             <td>
                                 <form method="post" action="{{url('/post/'.$post->id)}}">
                                     @csrf
