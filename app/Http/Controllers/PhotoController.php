@@ -12,12 +12,12 @@ use PHPUnit\Framework\Constraint\Count;
 class PhotoController extends Controller
 {
 
-    public function delete($id)
+    public function delete(Photo $photo)
     {
-        $photo = Photo::find($id);
         //check how many photos the post have
         //if is less than 1 it can not be deleted
         $post = $photo->post;
+
         if (count($post->photos) > 1) {
             if ($photo) {
                 Storage::disk('public')->delete($photo->file);

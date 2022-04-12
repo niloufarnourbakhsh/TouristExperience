@@ -83,7 +83,7 @@
                                 <div class="card">
                                     <img src="{{url('storage/'.$photo->file)}}" alt="" class="card-img-top show-image-size">
                                     <div class="card-footer p-0">
-                                        <form action="{{url('photo/delete/'.$photo->id)}}" method="POST">
+                                        <form action="{{url('photo/'.$photo->id)}}" method="POST">
                                             @csrf
                                             <input type="hidden" value="DELETE" name="_method">
                                             <button class="btn btn-block btn-sm bg-purple text-white" type="submit">
