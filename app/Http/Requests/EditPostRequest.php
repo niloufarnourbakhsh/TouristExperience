@@ -24,10 +24,12 @@ class EditPostRequest extends FormRequest
     public function rules()
     {
         return [
-            //
             'city'=>'required',
             'title'=>'required',
-            'body'=>'required'
+            'body'=>'required',
+            'food' => '',
+            'sightseeing' => '',
+            'file' => ''
         ];
     }
 
@@ -37,7 +39,6 @@ class EditPostRequest extends FormRequest
             'city.required'=>'وارد کردن نام شهر ضروری است ',
             'title.required'=>'عنوان مورد نظر را وارد کنید',
             'body.required'=>'مطلبی در مورد مکان بازدید شده بنویسید'
-
         ];
     }
 }
