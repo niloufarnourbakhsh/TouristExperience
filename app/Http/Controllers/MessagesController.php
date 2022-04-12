@@ -11,7 +11,7 @@ class MessagesController extends Controller
 {
     public function index()
     {
-        $messages = Message::query()->paginate();
+        $messages = Message::query()->paginate(8);
         return view('Admin.messages')->with('messages', $messages);
     }
 
@@ -27,9 +27,9 @@ class MessagesController extends Controller
         return redirect()->back();
     }
 
-    public function delete($id)
+    public function delete(Message $message)
     {
-        Message::query()->find($id)->delete();
+        $message->delete();
         return redirect()->back();
     }
 }
