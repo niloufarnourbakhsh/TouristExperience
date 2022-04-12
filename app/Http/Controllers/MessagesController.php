@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\MessageRequest;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class MessagesController extends Controller
 {
@@ -22,7 +23,7 @@ class MessagesController extends Controller
     public function store(MessageRequest $request)
     {
         Message::create($request->validated());
-        session()->flash('messages', 'پیام شما ثبت شد');
+        Session::flash('messages', 'پیام شما ثبت شد');
         return redirect()->back();
     }
 
