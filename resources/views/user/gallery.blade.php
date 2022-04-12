@@ -12,7 +12,7 @@
                             @foreach($posts as $post)
 
                             <div class="col mb-3">
-                                <a href="{{url('/show-post/'.$post->slug)}}">
+                                <a href="{{url('/show/'.$post->slug)}}">
                                 <div class="card rounded">
                                         <img src="{{url('/storage/'.$post->photos->first()->file)}}" alt="" class="card-img-top img-size">
                                         <p class="card-img-overlay text-center text-bold">
