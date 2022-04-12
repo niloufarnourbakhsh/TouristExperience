@@ -25,10 +25,12 @@ class CreatePostRequest extends FormRequest
     {
         return [
             //
-            'title'=>'required|min:5',
-            'city'=>'required',
-            'body'=>'required',
-            'file'=>'required'
+            'title' => 'required|min:5',
+            'city' => 'required',
+            'body' => 'required',
+            'file' => 'required',
+            'food' => '',
+            'sightseeing' => ''
         ];
     }
 
