@@ -22,9 +22,9 @@ class CommentController extends Controller
         return redirect()->back();
     }
 
-    public function delete($id)
+    public function delete(Comment $comment)
     {
-        Comment::find($id)->delete();
+        $comment->delete();
         Session::flash('delete_message', 'پیام موورد نظر حذف شد');
         return redirect()->back();
     }

@@ -123,7 +123,7 @@
                         @if(Auth::id()===$comment->user_id || Auth::user()->IsAdmin())
 
                          <div>
-                             <form action="{{url('/comment/delete/'.$comment->id)}}" method="post">
+                             <form action="{{url('/comment/'.$comment->id)}}" method="post">
                                  @csrf
                                  <input type="hidden" value="DELETE" name="_method">
                                 <button class="btn bg-gray text-purple" type="submit"><i class="far fa-times-circle"></i> </button>

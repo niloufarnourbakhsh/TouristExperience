@@ -30,9 +30,9 @@
                 <tr class="text-right">
                     <td>{{$comment->id}}</td>
                     <td>{!! \Illuminate\Support\Str::limit($comment->body,170) !!}</td>
-                    <td><a href="{{url('/show-post/'.$comment->post->slug)}}" class="btn btn-show text-white btn-sm"><i class="fas fa-eye"></i></a></td>
+                    <td><a href="{{url('/show/'.$comment->post->slug)}}" class="btn btn-show text-white btn-sm"><i class="fas fa-eye"></i></a></td>
                     <td>
-                        <form method="post" action="{{url('/comment/delete/'.$comment->id)}}">
+                        <form method="post" action="{{url('/comment/'.$comment->id)}}">
                             @csrf
                             <input type="hidden" value="DELETE" name="_method">
                             <button type="submit" class="btn btn-delete text-white btn-sm">
