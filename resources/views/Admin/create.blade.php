@@ -15,7 +15,7 @@
                             </div>
                             <div class="text-right">
 
-                            <form action="{{url('/post/store')}}" method="POSt" enctype="multipart/form-data">
+                            <form action="{{url('/post')}}" method="POSt" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
 

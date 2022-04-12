@@ -9,6 +9,7 @@ use App\Events\PostUpdate;
 use App\Http\Requests\CreatePostRequest;
 use App\Http\Requests\EditPostRequest;
 use App\Models\City;
+use App\Models\Like;
 use App\Models\Photo;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -56,6 +57,7 @@ class PostController extends Controller
 
     public function show($slug)
     {
+
         //first find the post
         $post = Post::query()->with(['user', 'comments', 'likes', 'photos'])
             ->withCount('likes')
@@ -71,15 +73,14 @@ class PostController extends Controller
             }
         }
         $IsLiked = $liked ? true : false;
-        return view('user.show-post')->with('post', $post)->with('IsLiked', $IsLiked);
+        return view('user.show')->with('post', $post)->with('IsLiked', $IsLiked);
     }
 
-    public function like($id)
+    public function like(Post $post)
     {
         // this part is for knowing if the user liked the post or not
         //first check the user is login or not
         $user = Auth::id();
-        $post = Post::find($id);
         $likesCount = \count($post->likes);
         //check how many like the post have. if it is 0 it can not go to foreach loop
         //so we put the if below
@@ -100,15 +101,14 @@ class PostController extends Controller
         return view('user.gallery')->with('posts', $posts);
     }
 
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $post = Post::with('photos')->find($id);
+        $post->with('photos');
         return view('Admin.edit')->with('post', $post);
     }
 
-    public function update(EditPostRequest $request, $id)
+    public function update(EditPostRequest $request, Post $post)
     {
-        $post = Post::find($id);
         City::whereId($request->cityId)->update(['name' => $request->city]);
         $post->update($request->only(['title', 'body', 'food', 'sightseeing']));
         $images = $request->file;
@@ -118,9 +118,8 @@ class PostController extends Controller
         return redirect()->back();
     }
 
-    public function delete($id)
+    public function delete(Post $post)
     {
-        $post = Post::find($id);
         if ($post->photos) {
             \event(new PostDelete($post));
         }
@@ -130,9 +129,9 @@ class PostController extends Controller
         return redirect()->back();
     }
 
-    public function approve(Request $request, $id)
+    public function approve(Request $request, Post $post)
     {
-        Post::Where('id', $id)->update(['is_active' => $request->status]);
+        $post->update(['is_active' => $request->status]);
         return redirect()->back();
     }
 }

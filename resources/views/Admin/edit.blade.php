@@ -21,7 +21,7 @@
                                 </div>
                             </div>
                             <div class="text-right">
-                                <form action="{{url('post/update/'.$post->id)}}" method="POSt" enctype="multipart/form-data">
+                                <form action="{{url('post/'.$post->id)}}" method="POSt" enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="_method" value="PUT"/>
                                     <div class="form-group">

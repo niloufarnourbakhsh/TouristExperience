@@ -52,11 +52,11 @@
                                     </form>
                                 @endif
                             </td>
-                            <td><a href="{{url('/show-post/'.$post->slug)}}" class="btn btn-show text-white btn-sm"><i class="fas fa-eye"></i></a></td>
+                            <td><a href="{{url('/show/'.$post->slug)}}" class="btn btn-show text-white btn-sm"><i class="fas fa-eye"></i></a></td>
 
                             <td><a href="{{url('post/edit/'.$post->id)}}" class="btn btn-edit btn-sm" ><i class="fas fa-edit"></i></a></td>
                             <td>
-                                <form method="post" action="{{url('post/delete/'.$post->id)}}">
+                                <form method="post" action="{{url('/post/'.$post->id)}}">
                                     @csrf
                                     <input type="hidden" value="DELETE" name="_method">
                                     <button type="submit" class="btn btn-delete text-white btn-sm">
