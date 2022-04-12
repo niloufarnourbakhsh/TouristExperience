@@ -8,23 +8,20 @@ use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
-    //
 
-    public function index(){
-        $users=User::where('role_id',2)->paginate(8);
-        return view('Admin.users')->with('users',$users);
+    public function index()
+    {
+        $users = User::where('role_id', 2)->paginate(8);
+        return view('Admin.users')->with('users', $users);
 
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
 
         User::find($id)->delete();
-        Session::flash('users-delete','کاربر مورد نظر حذف شد');
-
-       return redirect()->back();
+        Session::flash('users-delete', 'کاربر مورد نظر حذف شد');
+        return redirect()->back();
     }
-
-
-
 
 }
