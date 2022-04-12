@@ -16,10 +16,9 @@ class UserController extends Controller
 
     }
 
-    public function delete($id)
+    public function delete(User $user)
     {
-
-        User::find($id)->delete();
+        $user->delete();
         Session::flash('users-delete', 'کاربر مورد نظر حذف شد');
         return redirect()->back();
     }

@@ -38,7 +38,7 @@
                     <td>{{$user->email}}</td>
 
                     <td>
-                        <form method="post" action="{{url('users/delete/'.$user->id)}}">
+                        <form method="post" action="{{url('users/'.$user->id)}}">
                             @csrf
                             <input type="hidden" value="DELETE" name="_method">
                             <button type="submit" class="btn btn-delete text-white btn-sm">
