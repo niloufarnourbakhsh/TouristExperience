@@ -55,20 +55,17 @@ class PostController extends Controller
         return redirect('/admin');
     }
 
-    public function show($slug)
+    public function show(Post $post)
     {
-
-        //first find the post
-        $post = Post::query()->with(['user', 'comments', 'likes', 'photos'])
-            ->withCount('likes')
-            ->where('slug', $slug)
-            ->first();
-
+//        first find the post
+        $post->with(['user', 'comments', 'likes', 'photos']);
+        $likes_count = \count($post->likes);
         $post->increment('view');
         $user = Auth::check() ? Auth::id() : null;
         $liked = false;
         if (!is_null($user)) {
-            if ($post->likes_count > 0) {
+
+            if ($likes_count > 0) {
                 $liked = $post->likes()->where(['user_id' => $user])->first();
             }
         }
