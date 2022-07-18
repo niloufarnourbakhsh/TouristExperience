@@ -33,40 +33,40 @@ Route::get('/contact',[MessagesController::class,'create'])->name('contact-us');
 Route::post('/contact/store',[MessagesController::class,'store']);
 Route::view('/about','user/about');
 Route::get('/gallery',[PostController ::class,'gallery']);
-Route::get('/show-post/{id}',[PostController::class,'show']);
-
+Route::get('/show/{post:slug}',[PostController::class,'show']);
+//like a post
+Route::post('/like/{post}',[PostController::class,'like'])->middleware('auth');
 
 //comment Section
-Route::delete('/comment/delete/{id}',[CommentController::class,'delete']);
+Route::delete('/comment/{comment}',[CommentController::class,'delete']);
 Route::post('/comment/create',[CommentController::class,'create']);
 
-Route::get('/post/edit/{id}',[PostController::class,'edit']);
-Route::put('/post/update/{id}',[PostController::class,'update']);
+
 
 Route::middleware([IsAdmin::class])->group(function () {
     Route::get('/admin',[PostController::class, 'index']);
-
-    Route::get('/admin',[PostController::class, 'index']);
+    Route::get('/post/{post}',[PostController::class,'edit']);
+    Route::put('/post/{post}',[PostController::class,'update']);
     Route::get('/post/create',[PostController::class,'create']);
-    Route::post('/post/store',[PostController::class,'store']);
+    Route::post('/post/',[PostController::class,'store']);
+    Route::delete('/post/{post}',[PostController::class,'delete']);
+    Route::put('/post/approve/{post}',[PostController::class,'approve']);
 
-    Route::delete('/post/delete/{id}',[PostController::class,'delete']);
-    Route::put('/post/approve/{id}',[PostController::class,'approve']);
-    Route::delete('/photo/delete/{id}',[PhotoController::class,'delete']);
+    Route::delete('/photo/{photo}',[PhotoController::class,'delete']);
     Route::get('/comments/',[CommentController::class,'index']);
-
 
 //    managing users
 
-
     Route::get('/users',[UserController::class,'index']);
-    Route::delete('/users/delete/{id}',[UserController::class,'delete']);
+    Route::delete('/users/{user}',[UserController::class,'delete'])->name('delete.user');
 
+//    messages
+    Route::get('/messages',[MessagesController::class,'index']);
+    Route::delete('/messages/{message}',[MessagesController::class,'delete']);
 
 });
 
-//like a post
-Route::post('/like/{id}',[PostController::class,'like'])->middleware('auth');
+
 
 
 Auth::routes();
