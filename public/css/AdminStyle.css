@@ -1,0 +1,48 @@
+:root{
+    --black: #000312;
+    --black-cover: rgba(0,0,0,0.6);
+    --delete: #a00429;
+    --edit: #7cb31a;
+    --show: #ff5507;
+    --orange: #f99500;
+}
+.bg-black{ background-color: var(--black)}
+body#admin{
+    /*background-image: linear-gradient(to right bottom,#caeaf5,#58919e,#54716d);*/
+    background-image: linear-gradient(to right bottom,#35523c,#889970);
+    direction: rtl;
+}
+#admin-nav{ height: 12vh}
+#manager{ min-height: 87vh;}
+#admin-menu{ min-height: 87vh}
+.bottom-border-orange{ border-bottom: 4px solid var(--orange)}
+
+.p-0{ padding: 0}
+.admin-hr{
+    width: 85%;
+    height: 3px;
+}
+#content{
+    background: var(--black-cover);
+    min-height: 80vh;
+}
+.bg-white{    background: var(--black-cover);}
+.btn-approve{ background-color: var(--edit)}
+.btn-show{ background-color: var(--show)}
+.btn-edit{ background-color: var(--orange)}
+.btn-delete,.session{ background-color: var(--delete)}
+.table{
+    transition: all 0.7s;
+    background-color: #383a3a;
+}
+.table tr:hover{ background-color: #626466;}
+.t-font{ font-size: 12px}
+.text-yellow{color: var(--orange)}
+.my-input-style-orange{
+    border: 3px solid var(--orange);
+}
+.my-input-style-orange:focus{ border: 4px solid var(--orange)}
+
+.btn-save {
+    background-color: #35523c;
+}
