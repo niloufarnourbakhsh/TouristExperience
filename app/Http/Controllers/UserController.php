@@ -21,7 +21,7 @@ class UserController extends Controller
     {
         $user->delete();
         Session::flash('users-delete', 'کاربر مورد نظر حذف شد');
-        return back();
+        return redirect('/users');
     }
 
 }

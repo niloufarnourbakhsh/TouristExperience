@@ -5,29 +5,24 @@ namespace Tests\Feature;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class UserTest extends TestCase
 {
     use RefreshDatabase;
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_example()
-    {
-        $response = $this->get('/');
+    private $admin;
 
-        $response->assertStatus(200);
+    public function setUp():void
+    {
+        parent::setUp();
+        $role=Role::create(['name' => 'Admin']);
+        $this->admin=User::factory()->create(['role_id'=>$role->id]);
     }
     /** @test */
     public function user_id_is_in_view()
     {
         $user=User::factory()->create();
-        $admin=User::factory()->create(['role_id'=>1]);
-        $this->actingAs($admin)->get('/users')
+        $this->actingAs($this->admin)->get('/users')
             ->assertSee('id',$user->id);
 
     }
@@ -35,9 +30,8 @@ class UserTest extends TestCase
     public function user_name_is_in_view()
     {
         $user=User::factory()->create();
-        $admin=User::factory()->create(['role_id'=>1]);
-        $this->actingAs($admin)->get('/users')
-            ->assertSee('name',$user->name);
+        $this->actingAs($this->admin)->get('/users')
+            ->assertSee($user->name);
 
     }
 
@@ -45,19 +39,15 @@ class UserTest extends TestCase
     public function user_email_is_in_view()
     {
         $user=User::factory()->create();
-        $admin= $this->admin();
-        $this->actingAs($admin)->get('/users')
-            ->assertSee('email',$user->email);
+        $this->actingAs($this->admin)->get('/users')
+            ->assertSee($user->email);
 
     }
     /** @test */
     public function just_admin_can_see_the_users()
     {
-        $this->withExceptionHandling();
-        $role=Role::create(['name'=>'Admin']);
         User::factory()->create();
-        $admin=User::factory()->create(['role_id'=>$role->id]);
-        $response=$this->actingAs($admin)->get('/users');
+        $response=$this->actingAs($this->admin)->get('/users');
 
         $response->assertStatus(200);
     }
@@ -65,17 +55,24 @@ class UserTest extends TestCase
     public function un_auth_user_can_not_see_the_users()
     {
         $role=Role::create(['name'=>'User']);
-        $this->withExceptionHandling();
-        $user=User::factory()->create(['role_id'=>$role->id]);
-        $response=$this->actingAs($user)->get('/users');
+        $response=$this->get('/users');
         $response->assertStatus(302);
     }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
-     */
-    public function admin(): \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
+    /** @test */
+    public function do_not_show_admin_in_user_list()
     {
-        return User::factory()->create(['role_id' => 1]);
+     $response=$this->get('users');
+     $response->assertDontSee($this->admin->role_id)
+;    }
+    /** @test */
+    public function admin_can_delete_a_user()
+    {
+        $user=User::factory()->create();
+        $this->assertCount(2,User::all());
+        $response=$this->actingAs($this->admin)->delete('/users/'.$user->id);
+        $response->assertSessionHas('users-delete');
+        $this->assertCount(1,User::all());
+        $response->assertRedirect('/users');
     }
+
 }
