@@ -12,7 +12,7 @@ class Post extends Model
     use HasFactory;
     Use Sluggable;
     Use SluggableScopeHelpers;
-    protected $fillable=['title','body','food','sightseeing','city_id','user_id','is_active'];
+    protected $fillable=['title','body','food','sightseeing','city_id','user_id','is_active','slug'];
 
     public function sluggable():array
     {

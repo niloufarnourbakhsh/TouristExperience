@@ -30,11 +30,11 @@ class PostController extends Controller
 
     public function store(CreatePostRequest $request)
     {
-        $city = City::create([
-            'name' => $request->city
-        ]);
+
         $data = array_merge($request->only(['title', 'body', 'food', 'sightseeing']), [
-            'city_id' => $city->id,
+            'city_id' =>  (City::create([
+                'name' => $request->city
+            ]))->id,
             'user_id' => Auth::id()
         ]);
         $post = Post::create($data);

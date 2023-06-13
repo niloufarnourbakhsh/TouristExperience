@@ -49,7 +49,7 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::get('/{post}', [PostController::class, 'edit'])->name('post.edit');
     Route::put('/{post}', [PostController::class, 'update'])->name('post.update');
     Route::get('/posts/create', [PostController::class, 'create'])->name('post.create');
-    Route::post('/store', [PostController::class, 'store'])->name('post.store');
+    Route::post('/posts', [PostController::class, 'store'])->name('post.store');
     Route::delete('/{post}', [PostController::class, 'delete'])->name('post.delete');
     Route::put('/approve/{post}', [PostController::class, 'approve'])->name('approval');
     Route::delete('/photo/{photo}', [PhotoController::class, 'delete'])->name('photo.delete');
