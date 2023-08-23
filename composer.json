@@ -8,22 +8,22 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
-        "cviebrock/eloquent-sluggable": "^9.0",
+        "php": "^8.2|7.3",
+        "cviebrock/eloquent-sluggable": "^9.0.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.0",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^v2.8.1"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.6",
-        "spatie/laravel-ignition": "^1.0",
-        "fakerphp/faker": "^1.9.1",
-        "laravel/ui": "^3.1",
-        "mockery/mockery": "^1.4.2",
-        "nunomaduro/collision": "^6.0",
-        "phpunit/phpunit": "^9.3.3"
+        "barryvdh/laravel-debugbar": "^v3.8.2",
+        "spatie/laravel-ignition": "^1.6.4",
+        "fakerphp/faker": "^v1.23.0",
+        "laravel/ui": "^v3.4.6",
+        "mockery/mockery": "^1.6.6",
+        "nunomaduro/collision": "^7.0",
+        "phpunit/phpunit": "^10.0.19"
     },
     "config": {
         "optimize-autoloader": true,
@@ -47,7 +47,7 @@
             "Tests\\": "tests/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
         "post-autoload-dump": [

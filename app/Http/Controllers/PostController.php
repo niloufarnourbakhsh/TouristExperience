@@ -37,6 +37,7 @@ class PostController extends Controller
             ]))->id,
             'user_id' => Auth::id()
         ]);
+
         $post = Post::create($data);
         $images = $request->file;
 
