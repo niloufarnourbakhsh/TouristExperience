@@ -51,7 +51,7 @@ class PostController extends Controller
 //        first find the post
         $post->increment('view');
         $post->with(['user', 'comments', 'likes', 'photos']);
-        $likes_count = \count($post->likes);
+        $likes_count =$post->withCount('likes');
 
         $IsLiked = false;
         if (Auth::check()) {
